@@ -86,9 +86,9 @@ s3-security-auto-healer/
 ├── requirements.txt           ← Python dependencies
 ├── .gitignore                 ← Excludes credentials and cache files
 └── screenshots/               ← Evidence of working pipeline
-    ├── cloudwatch_logs.png
-    ├── architecture_diagram.png
-    └── remediation_result.png
+    ├── cloudwatch_logs.png        ← Lambda remediation audit logs
+    ├── eventbridge_rule.png       ← EventBridge rule configuration
+    └── lambda_function.png        ← Lambda function overview with trigger
 ```
 
 ---
@@ -196,7 +196,7 @@ python simulate_attack.py
 [!] EventBridge rule should now fire Lambda Auto-Healer...
 
 --- IMMEDIATE STATUS (before Lambda remediation) ---
-[🚨] Bucket is PUBLIC — misconfiguration confirmed.
+[���] Bucket is PUBLIC — misconfiguration confirmed.
      Public Policy : True
      Block Active  : False
 
@@ -215,7 +215,7 @@ python simulate_attack.py
      Public Policy : False   ← private
      Block Active  : True    ← protected
 
-[🔒] BUCKET IS NOT PUBLIC.
+[���] BUCKET IS NOT PUBLIC.
      Misconfiguration detected and remediated
      automatically by the Lambda Auto-Healer pipeline.
 
