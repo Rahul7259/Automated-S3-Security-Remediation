@@ -1,0 +1,22 @@
+{
+  "_comment": "EventBridge rule to trigger Lambda Auto-Healer on S3 misconfiguration events.",
+  "_setup": "Create this rule in AWS EventBridge > Rules > Create Rule. Set target to your Lambda function.",
+
+  "RuleName": "S3-Security-Auto-Healer-Rule",
+  "Description": "Triggers Lambda remediation when S3 bucket security settings are weakened via CloudTrail events.",
+  "EventBusName": "default",
+  "State": "ENABLED",
+
+  "EventPattern": {
+    "source": ["aws.s3"],
+    "detail-type": ["AWS API Call via CloudTrail"],
+    "detail": {
+      "eventSource": ["s3.amazonaws.com"],
+      "eventName": [
+        "PutBucketPublicAccessBlock",
+        "PutBucketPolicy",
+        "PutBucketAcl"
+      ]
+    }
+  }
+}
