@@ -1,0 +1,15 @@
+{
+    "_comment": "EventBridge schedule to trigger IAM Auditor Lambda weekly.",
+    "_setup": "Create this rule in AWS EventBridge > Rules > Create Rule. Set as Schedule type.",
+    
+    "RuleName": "IAM-Access-Governance-Weekly",
+    "Description": "Triggers IAM access governance audit every Monday at 9 AM UTC",
+    "ScheduleExpression": "cron(0 9 ? * MON *)",
+    "State": "ENABLED",
+    "Targets": [
+        {
+            "Id": "IAMAccessGovernanceLambda",
+            "Arn": "REPLACE_WITH_YOUR_LAMBDA_ARN"
+        }
+    ]
+}
